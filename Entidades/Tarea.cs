@@ -13,9 +13,9 @@ namespace Entidades
         public string Descripcion { get; set; }
         public DateTime FechaCreacion { get; set; }
         public Categoria Categoria { get; set; }
-        public DateTime Recordatorio { get; set; }
+        public DateTime? Recordatorio { get; set; }
         public string Estado { get; set; }
-        public DateTime FechaCompletado { get; set; }
+        public DateTime? FechaCompletado { get; set; }
 
     }
 }

@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Datos
 {
-    public class TareasDatos
+    public class AccesoDatos
     {
         private SqlConnection conexion;
         private SqlCommand comando;
@@ -16,7 +16,7 @@ namespace Datos
         {
             get { return lector; }
         }
-        public TareasDatos()
+        public AccesoDatos()
         {
             conexion = new SqlConnection("server =.\\SQLEXPRESS01;  database = ListaDeTareas;Integrated security=true");
             comando = new SqlCommand();

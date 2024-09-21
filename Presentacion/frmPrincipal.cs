@@ -1,20 +1,34 @@
-﻿using System;
+﻿using Entidades;
+using Negocio;
+using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Presentacion
 {
     public partial class frmPrincipal : Form
     {
+        public List<Tarea> lista;
         public frmPrincipal()
         {
             InitializeComponent();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            Cargar();
+
+        }
+
+        private void Cargar()
+        {
+            TareaNegocio negocio = new TareaNegocio();
+            dgvTareas.DataSource = negocio.Listar();
+            dgvTareas.Columns["Id"].Visible = false;
+            dgvTareas.Columns["FechaCreacion"].Visible = false;
+            dgvTareas.Columns["FechaCompletado"].Visible = false;
+            dgvTareas.Columns["Estado"].Visible = false;
+
         }
     }
 }
