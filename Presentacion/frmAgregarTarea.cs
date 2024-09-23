@@ -24,7 +24,12 @@ namespace Presentacion
         private void frmAgregarTarea_Load(object sender, EventArgs e)
         {
             dtpRecordatorio.MinDate = DateTime.Now;
+            CargarCbo();
 
+        }
+
+        public void CargarCbo()
+        {
             CategoriaNegocio categoria = new CategoriaNegocio();
 
             try
@@ -38,7 +43,6 @@ namespace Presentacion
 
                 throw;
             }
-
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -64,6 +68,13 @@ namespace Presentacion
 
                 throw ex;
             }
+        }
+
+        private void btnAgregarC_Click(object sender, EventArgs e)
+        {
+            frmAgregarCategoria frmAgregarCateg = new frmAgregarCategoria();
+            frmAgregarCateg.ShowDialog();
+            CargarCbo();
         }
     }
 }

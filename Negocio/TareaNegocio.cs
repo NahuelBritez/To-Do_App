@@ -78,6 +78,7 @@ namespace Negocio
                     datos.SetearParametro("@Nom", nuevo.Nombre);
                     datos.SetearParametro("@Desc", nuevo.Descripcion);
                     datos.SetearParametro("@FechaCre", nuevo.FechaCreacion = DateTime.Now); 
+                    datos.SetearParametro("@Rec", nuevo.FechaCreacion = DateTime.Now); 
                     datos.SetearParametro("@CatId", nuevo.Categoria.Id);
                     datos.SetearParametro("@Est", nuevo.Estado = "Activo");
 

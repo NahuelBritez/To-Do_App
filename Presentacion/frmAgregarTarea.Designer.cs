@@ -38,6 +38,7 @@
             this.lblCategoria = new System.Windows.Forms.Label();
             this.btnAceptar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAgregarC = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtNombre
@@ -112,6 +113,7 @@
             // 
             // btnAceptar
             // 
+            this.btnAceptar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAceptar.Location = new System.Drawing.Point(29, 402);
             this.btnAceptar.Name = "btnAceptar";
             this.btnAceptar.Size = new System.Drawing.Size(75, 23);
@@ -122,6 +124,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(168, 402);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
@@ -130,11 +133,23 @@
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
+            // btnAgregarC
+            // 
+            this.btnAgregarC.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarC.Location = new System.Drawing.Point(127, 356);
+            this.btnAgregarC.Name = "btnAgregarC";
+            this.btnAgregarC.Size = new System.Drawing.Size(21, 23);
+            this.btnAgregarC.TabIndex = 7;
+            this.btnAgregarC.Text = "+";
+            this.btnAgregarC.UseVisualStyleBackColor = true;
+            this.btnAgregarC.Click += new System.EventHandler(this.btnAgregarC_Click);
+            // 
             // frmAgregarTarea
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(274, 450);
+            this.Controls.Add(this.btnAgregarC);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.cboCategoria);
@@ -165,5 +180,6 @@
         private System.Windows.Forms.Label lblCategoria;
         private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAgregarC;
     }
 }
