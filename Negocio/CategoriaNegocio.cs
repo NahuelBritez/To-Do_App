@@ -8,14 +8,13 @@ using Datos;
 
 namespace Negocio
 {
-    internal class CategoriaNegocio
+    public class CategoriaNegocio
     {
-        List<Categoria> categorias;
         public List<Categoria> listar()
         {
-            Categoria categoria = new Categoria();  
+             List<Categoria> categorias = new List<Categoria>(); 
             AccesoDatos datos = new AccesoDatos();
-            string query = "SELECT Id,Nombre from Categorias";
+            string query = "SELECT CategoriaId,Nombre from Categorias";
 
             try
             {
@@ -24,8 +23,9 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    categoria.Id = (int)datos.Lector["Id"];
-                    categoria.Id = (int)datos.Lector["Nombre"];
+                    Categoria categoria = new Categoria();
+                    categoria.Id = (int)datos.Lector["CategoriaId"];
+                    categoria.Nombre = (string)datos.Lector["Nombre"];
 
                     categorias.Add(categoria);
                 }

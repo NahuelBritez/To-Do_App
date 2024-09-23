@@ -12,7 +12,7 @@ namespace Negocio
             AccesoDatos datos = new AccesoDatos();
             List<Tarea> tareas = new List<Tarea>();
 
-            string query = @"
+            string consulta = @"
                 SELECT 
                     T.TareaId AS IdTarea, 
                     T.Nombre AS NombreTarea, 
@@ -29,7 +29,7 @@ namespace Negocio
 
             try
             {
-                datos.Consulta(query);
+                datos.Consulta(consulta);
                 datos.ejecutarConsulta();
 
                 while (datos.Lector.Read())
@@ -65,5 +65,30 @@ namespace Negocio
                 throw ex;
             }
         }
+
+        public void Agregar(Tarea nuevo)
+        {
+            AccesoDatos datos = new AccesoDatos();
+            {
+                string consulta = "INSERT INTO Tareas (Nombre, Descripcion, FechaCreacion, Recordatorio, CategoriaId, Estado) VALUES (@Nom, @Desc, @FechaCre, @Rec, @CatId, @Est)";
+
+                try
+                {
+                    datos.Consulta(consulta);
+                    datos.SetearParametro("@Nom", nuevo.Nombre);
+                    datos.SetearParametro("@Desc", nuevo.Descripcion);
+                    datos.SetearParametro("@FechaCre", nuevo.FechaCreacion = DateTime.Now); 
+                    datos.SetearParametro("@CatId", nuevo.Categoria.Id);
+                    datos.SetearParametro("@Est", nuevo.Estado = "Activo");
+
+                    datos.ejecutarConsulta(); 
+                }
+                catch (Exception ex)
+                {
+                    throw ex; 
+                }
+            }
+        }
+
     }
 }

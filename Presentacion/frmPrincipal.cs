@@ -30,5 +30,12 @@ namespace Presentacion
             dgvTareas.Columns["Estado"].Visible = false;
 
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            frmAgregarTarea frmAgregar = new frmAgregarTarea();
+            frmAgregar.ShowDialog();
+            Cargar();
+        }
     }
 }
