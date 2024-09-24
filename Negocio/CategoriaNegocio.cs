@@ -10,7 +10,7 @@ namespace Negocio
 {
     public class CategoriaNegocio
     {
-        public List<Categoria> listar()
+        public List<Categoria> Listar()
         {
              List<Categoria> categorias = new List<Categoria>(); 
             AccesoDatos datos = new AccesoDatos();
@@ -23,9 +23,11 @@ namespace Negocio
 
                 while (datos.Lector.Read())
                 {
-                    Categoria categoria = new Categoria();
-                    categoria.Id = (int)datos.Lector["CategoriaId"];
-                    categoria.Nombre = (string)datos.Lector["Nombre"];
+                    Categoria categoria = new Categoria
+                    {
+                        Id = (int)datos.Lector["CategoriaId"],
+                        Nombre = (string)datos.Lector["Nombre"],
+                    };
 
                     categorias.Add(categoria);
                 }

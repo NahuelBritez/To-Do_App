@@ -40,9 +40,9 @@ namespace Negocio
                         Nombre = (string)datos.Lector["NombreTarea"],
                         Descripcion = (string)datos.Lector["Descripcion"],
                         FechaCreacion = (DateTime)datos.Lector["FechaCreacion"],
-                        Recordatorio = datos.Lector["FechaRecordatorio"] != DBNull.Value
-                            ? (DateTime?)datos.Lector["FechaRecordatorio"] 
-                            : null,
+                        Recordatorio = datos.Lector["FechaRecordatorio"] != DBNull.Value 
+                        ? (DateTime?)datos.Lector["FechaRecordatorio"] 
+                        : null,
                         FechaCompletado = datos.Lector["FechaCompletado"] != DBNull.Value
                             ? (DateTime?)datos.Lector["FechaCompletado"] 
                             : null,

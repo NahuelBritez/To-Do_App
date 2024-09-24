@@ -34,7 +34,7 @@ namespace Presentacion
 
             try
             {
-                cboCategoria.DataSource = categoria.listar();
+                cboCategoria.DataSource = categoria.Listar();
                 cboCategoria.ValueMember = "Id";
                 cboCategoria.DisplayMember = "Nombre";
             }

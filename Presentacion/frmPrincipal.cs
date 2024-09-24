@@ -37,5 +37,28 @@ namespace Presentacion
             frmAgregar.ShowDialog();
             Cargar();
         }
+
+        private void btnDetalle_Click(object sender, EventArgs e)
+        {
+            Tarea seleccionado;
+
+            try
+            {
+                if (dgvTareas.CurrentRow != null)
+                {
+                    seleccionado = (Tarea)dgvTareas.CurrentRow.DataBoundItem;
+                    frmDetalle frmDetalle = new frmDetalle(seleccionado);
+                    frmDetalle.ShowDialog();
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un articulo para verlo en detalle.");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
