@@ -91,5 +91,21 @@ namespace Negocio
             }
         }
 
+        public void Eliminar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.Consulta("delete from Tareas where TareaId= @Id");
+                datos.SetearParametro("@id", id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+
     }
 }

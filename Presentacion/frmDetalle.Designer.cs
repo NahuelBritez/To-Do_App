@@ -42,13 +42,15 @@
             // 
             // lblNombre
             // 
+            this.lblNombre.AutoEllipsis = true;
             this.lblNombre.AutoSize = true;
             this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblNombre.Location = new System.Drawing.Point(17, 23);
+            this.lblNombre.Location = new System.Drawing.Point(17, 21);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(76, 25);
             this.lblNombre.TabIndex = 0;
             this.lblNombre.Text = "label1";
+            this.lblNombre.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // gbxDescripcion
             // 
@@ -80,12 +82,14 @@
             // 
             // lblCreacion
             // 
+            this.lblCreacion.AutoEllipsis = true;
             this.lblCreacion.AutoSize = true;
-            this.lblCreacion.Location = new System.Drawing.Point(38, 48);
+            this.lblCreacion.Location = new System.Drawing.Point(38, 46);
             this.lblCreacion.Name = "lblCreacion";
             this.lblCreacion.Size = new System.Drawing.Size(35, 13);
             this.lblCreacion.TabIndex = 4;
             this.lblCreacion.Text = "label1";
+            this.lblCreacion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // btnCerrar
             // 

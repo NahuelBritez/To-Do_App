@@ -60,5 +60,34 @@ namespace Presentacion
                 throw ex;
             }
         }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            Tarea seleccionado = new Tarea();
+            TareaNegocio negocio = new TareaNegocio();
+
+            try
+            {
+                if (dgvTareas.CurrentRow != null)
+                {
+                    DialogResult respuesta = MessageBox.Show("¿De verdad querés eliminarlo?", "Eliminando", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (respuesta == DialogResult.Yes)
+                    {
+                        seleccionado = (Tarea)dgvTareas.CurrentRow.DataBoundItem;
+                        negocio.Eliminar(seleccionado.Id);
+                        Cargar();
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Seleccione un articulo para eliminar");
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
