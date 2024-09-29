@@ -7,29 +7,32 @@ namespace Negocio
 {
     public class TareaNegocio
     {
-        public List<Tarea> Listar()
+        public List<Tarea> Listar(string estadoFiltro)
         {
             AccesoDatos datos = new AccesoDatos();
             List<Tarea> tareas = new List<Tarea>();
 
             string consulta = @"
-                SELECT 
-                    T.TareaId AS IdTarea, 
-                    T.Nombre AS NombreTarea, 
-                    T.Descripcion AS Descripcion, 
-                    T.FechaCreacion, 
-                    T.Recordatorio AS FechaRecordatorio, 
-                    T.FechaCompletado, 
-                    C.Nombre AS Categoria, 
-                    T.Estado
-                FROM 
-                    Tareas T
-                JOIN 
-                    Categorias C ON T.CategoriaId = C.CategoriaId";
+                    SELECT 
+                        T.TareaId AS IdTarea, 
+                        T.Nombre AS NombreTarea, 
+                        T.Descripcion AS Descripcion, 
+                        T.FechaCreacion, 
+                        T.Recordatorio AS FechaRecordatorio, 
+                        T.FechaCompletado, 
+                        C.Nombre AS Categoria, 
+                        T.Estado
+                    FROM 
+                        Tareas T
+                    JOIN 
+                        Categorias C ON T.CategoriaId = C.CategoriaId
+                    WHERE 
+                        T.Estado = @EstadoFiltro";
 
             try
             {
                 datos.Consulta(consulta);
+                datos.SetearParametro("@EstadoFiltro", estadoFiltro);
                 datos.ejecutarConsulta();
 
                 while (datos.Lector.Read())
@@ -52,7 +55,6 @@ namespace Negocio
                         },
                         Estado = (string)datos.Lector["Estado"]
                     };
-
                     tareas.Add(aux);
                 }
 
@@ -64,6 +66,15 @@ namespace Negocio
                 datos.CerrarConexion();
                 throw ex;
             }
+        }
+
+        public List<Tarea> ListarActivas()
+        {
+            return Listar("Activo");
+        }
+        public List<Tarea> ListarInactivas()
+        {
+            return Listar("Inactivo");
         }
 
         public void Agregar(Tarea nuevo)
@@ -96,7 +107,7 @@ namespace Negocio
             try
             {
                 AccesoDatos datos = new AccesoDatos();
-                datos.Consulta("delete from Tareas where TareaId= @Id");
+                datos.Consulta("delete from Tareas where TareaId = @Id");
                 datos.SetearParametro("@id", id);
                 datos.ejecutarAccion();
 
@@ -107,5 +118,35 @@ namespace Negocio
             }
         }
 
+        public void EliminarL(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.Consulta("UPDATE Tareas SET Estado = 'Inactivo' WHERE TareaId = @Id;");
+                datos.SetearParametro("@Id", id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }        
+        public void Restaurar(int id)
+        {
+            try
+            {
+                AccesoDatos datos = new AccesoDatos();
+                datos.Consulta("UPDATE Tareas SET Estado = 'Activo' WHERE TareaId = @Id;");
+                datos.SetearParametro("@Id", id);
+                datos.ejecutarAccion();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }
